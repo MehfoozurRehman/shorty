@@ -28,7 +28,7 @@ async function main() {
       const { shortUrl } = c.req.param();
       const { cli } = c.req.query();
 
-      if (cli) {
+      if (cli === "true") {
         const url = await prisma.url.findUnique({
           where: { shortUrl },
           select: { url: true },

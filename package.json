@@ -3,8 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch index.ts",
-    "start": "tsx index.ts",
-    "build": "prisma generate",
+    "start": "npx tsx index.ts",
     "generate": "prisma generate",
     "studio": "prisma studio"
   },

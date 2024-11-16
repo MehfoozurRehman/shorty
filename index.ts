@@ -5,7 +5,7 @@ import { serve } from "@hono/node-server";
 
 const prisma = new PrismaClient();
 
-const app = new Hono().basePath("/api");
+const app = new Hono();
 
 app.use(logger());
 
@@ -63,8 +63,7 @@ async function main() {
       const maxAttempts = 10;
 
       for (let count = 0; count < maxAttempts; count++) {
-        shortUrl =
-          Math.random().toString(36).substring(2, 8) + Date.now().toString(36);
+        shortUrl = Math.random().toString(36).slice(-6);
         if (!(await checkShortUrl(shortUrl))) {
           break;
         }
@@ -83,7 +82,13 @@ async function main() {
         },
       });
 
-      return c.json({ shortUrl });
+      return c.json({
+        shortUrl: `${
+          process.env.NODE_ENV === "production"
+            ? "https://shortyurl.up.railway.app"
+            : "http://localhost:3000"
+        }/${shortUrl}`,
+      });
     } catch (e) {
       console.error(e);
       return c.json({ message: "Internal Server Error" }, 500);

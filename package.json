@@ -5,7 +5,8 @@
     "dev": "tsx watch index.ts",
     "start": "npx tsx index.ts",
     "generate": "prisma generate",
-    "studio": "prisma studio"
+    "studio": "prisma studio",
+    "format": "npx prettier --write ."
   },
   "dependencies": {
     "@hono/node-server": "^1.13.7",

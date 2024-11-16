@@ -1,1 +1,4 @@
-# url-shortner
+```
+npm install
+npm run start
+```

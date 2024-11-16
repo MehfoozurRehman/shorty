@@ -26,6 +26,20 @@ async function main() {
   app.get("/:shortUrl", async (c) => {
     try {
       const { shortUrl } = c.req.param();
+      const { cli } = c.req.query();
+
+      if (cli) {
+        const url = await prisma.url.findUnique({
+          where: { shortUrl },
+          select: { url: true },
+        });
+
+        if (!url) {
+          return c.json({ message: "Not Found" }, 404);
+        }
+
+        return c.json({ url: url.url });
+      }
 
       const url = await prisma.url.findUnique({
         where: { shortUrl },
@@ -70,7 +84,7 @@ async function main() {
         if (count === maxAttempts - 1) {
           return c.json(
             { message: "Could not generate unique short URL" },
-            500,
+            500
           );
         }
       }

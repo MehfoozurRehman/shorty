@@ -70,7 +70,7 @@ async function main() {
         if (count === maxAttempts - 1) {
           return c.json(
             { message: "Could not generate unique short URL" },
-            500
+            500,
           );
         }
       }

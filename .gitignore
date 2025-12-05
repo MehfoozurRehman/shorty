@@ -1,9 +1,6 @@
 # dev
 .yarn/
 !.yarn/releases
-.vscode/*
-!.vscode/launch.json
-!.vscode/*.code-snippets
 .idea/workspace.xml
 .idea/usage.statistics.xml
 .idea/shelf
@@ -26,3 +23,7 @@ lerna-debug.log*
 
 # misc
 .DS_Store
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore

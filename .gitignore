@@ -22,4 +22,6 @@ lerna-debug.log*
 # misc
 .DS_Store
 .gitignore
-config.bat
+
+.env*
+!.env.example
